@@ -60,7 +60,7 @@ const Header = () => {
 
         <div className={styles.right}>
           <NavLink to="/search">
-            <svg className={styles.icon}>
+            <svg className={styles.largeIcon}>
               <use href="/icons/icons.svg#search-icon" />
             </svg>
           </NavLink>

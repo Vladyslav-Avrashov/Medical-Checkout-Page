@@ -9,6 +9,14 @@
   border-bottom: 1px solid #ddd;
 }
 
+.orderItem:first-child {
+  padding-top: 0;
+}
+
+.orderItem:last-child {
+  padding-bottom: 0;
+}
+
 .itemImage {
   width: 56px;
   height: 56px;
@@ -86,8 +94,10 @@
   .orderItem {
     gap: 12px;
     padding: 10px 0;
-    flex-direction: column;
-    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .itemImage {
@@ -96,8 +106,11 @@
   }
 
   .itemInfo {
+    flex-grow: 1;
     gap: 4px;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: auto;
   }
 
   .itemName {
@@ -119,6 +132,6 @@
 
   .itemPrice {
     font-size: 0.9rem;
-    align-self: flex-end;
+    align-self: auto;
   }
 }

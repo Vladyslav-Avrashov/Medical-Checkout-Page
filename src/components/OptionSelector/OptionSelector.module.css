@@ -102,7 +102,7 @@
 .checkmark {
   width: 20px;
   height: 20px;
-  border: 2px solid #5a9bfe;
+  border: 1px solid #ddd;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -115,6 +115,10 @@
 
 .selector.hasError .checkmark {
   border-color: #d9534f;
+}
+
+.radioInput:checked + .optionContent .checkmark {
+  border-color: #5a9bfe;
 }
 
 .radioInput:checked + .optionContent .checkmark::after {

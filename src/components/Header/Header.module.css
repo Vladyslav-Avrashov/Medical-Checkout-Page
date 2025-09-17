@@ -1,7 +1,5 @@
 .header {
   background-color: #5a9bfe;
-  position: sticky;
-  z-index: 100;
 }
 
 .header > div {
@@ -60,7 +58,8 @@
   gap: 40px;
 }
 
-.icon {
+.icon,
+.largeIcon {
   color: #ffffff;
   width: 24px;
   height: 24px;
@@ -70,7 +69,13 @@
   transition: color 0.2s ease-in-out;
 }
 
-.icon:hover {
+.largeIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.largeIcon .icon:hover,
+.largeIcon:hover {
   color: lightgray;
 }
 
@@ -100,6 +105,7 @@
 
 @media (max-width: 1439px) {
   .header > div {
+    max-width: 768px;
     padding: 27px 20px;
   }
 
@@ -109,6 +115,11 @@
 }
 
 @media (max-width: 767px) {
+  .header > div {
+    max-width: 525px;
+    justify-content: space-between;
+  }
+
   .center {
     display: none;
   }
@@ -119,9 +130,5 @@
 
   .burger {
     display: flex;
-  }
-
-  .header > div {
-    padding: 27px 15px;
   }
 }
