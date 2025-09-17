@@ -44,7 +44,7 @@ const Footer = () => {
               className={styles.iconLink}
             >
               <svg className={styles.icon}>
-                <use href="/src/assets/icons.svg#instagram-icon" />
+                <use href="/icons/icons.svg#instagram-icon" />
               </svg>
             </a>
             <a
@@ -54,7 +54,7 @@ const Footer = () => {
               className={styles.iconLink}
             >
               <svg className={styles.icon}>
-                <use href="/src/assets/icons.svg#twitter-icon" />
+                <use href="/icons/icons.svg#twitter-icon" />
               </svg>
             </a>
             <a
@@ -64,7 +64,7 @@ const Footer = () => {
               className={styles.iconLink}
             >
               <svg className={styles.icon}>
-                <use href="/src/assets/icons.svg#facebook-icon" />
+                <use href="/icons/icons.svg#facebook-icon" />
               </svg>
             </a>
           </div>

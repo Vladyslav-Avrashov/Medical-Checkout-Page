@@ -5,7 +5,7 @@ const CardItem = ({ icon, title, description }) => {
     <div className={styles.cardItem}>
       <div className={styles.iconContainer}>
         <svg className={styles.icon}>
-          <use href={`/public/icons/icons.svg#${icon}`} />
+          <use href={`/icons/icons.svg#${icon}`} />
         </svg>
       </div>
       <h3 className={styles.title}>{title}</h3>

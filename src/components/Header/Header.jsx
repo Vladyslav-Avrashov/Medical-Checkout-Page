@@ -61,17 +61,17 @@ const Header = () => {
         <div className={styles.right}>
           <NavLink to="/search">
             <svg className={styles.icon}>
-              <use href="/public/icons/icons.svg#search-icon" />
+              <use href="/icons/icons.svg#search-icon" />
             </svg>
           </NavLink>
           <NavLink to="/cart">
             <svg className={styles.icon}>
-              <use href="/public/icons/icons.svg#cart-active-icon" />
+              <use href="/icons/icons.svg#cart-active-icon" />
             </svg>
           </NavLink>
           <NavLink to="/profile">
             <svg className={styles.icon}>
-              <use href="/public/icons/icons.svg#profile-icon" />
+              <use href="/icons/icons.svg#profile-icon" />
             </svg>
           </NavLink>
 
