@@ -1,0 +1,176 @@
+.orderSummary h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0 0 25px 0;
+}
+
+.promoCode {
+  margin: 32px 0 76px 0;
+}
+
+.promoCode h4 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.125;
+  margin-bottom: 24px;
+}
+
+.promoCodeContainer {
+  position: relative;
+  width: 100%;
+}
+
+.promoCode input {
+  width: 100%;
+  padding: 21px 110px 21px 24px;
+  font-size: 0.95rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  transition: border-color 0.15s ease-in-out;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.125;
+}
+
+.promoCode input:focus {
+  outline: none;
+  border-color: #5a9bfe;
+}
+
+.promoCode input::placeholder {
+  color: #6c757d;
+}
+
+.promoCodeApplied {
+  background-color: #f8f9fa !important;
+}
+
+.applyPromoButton,
+.changePromoButton {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  padding: 13px 22px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+}
+
+.applyPromoButton {
+  background: #5a9bfe;
+  color: white;
+}
+
+.applyPromoButton:hover {
+  background-color: #5a67d8;
+}
+
+.changePromoButton {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  border: 1px solid #e1e5e9;
+}
+
+.changePromoButton:hover {
+  background-color: #e9ecef;
+}
+
+.promoSuccess {
+  color: #28a745;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 10px 0 0 0;
+}
+
+.summaryDetails {
+  margin: 0 0 43px 0;
+}
+
+.summaryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 0.9;
+  margin-bottom: 32px;
+}
+
+.summaryItem:not(:last-child) {
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 15px;
+}
+
+.summaryItem:last-child {
+  margin-top: 64px;
+}
+
+.total {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 0.75;
+}
+
+.checkoutButton {
+  width: 100%;
+  padding: 31px;
+  color: #ffffff;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 16px;
+  background: #5a9bfe;
+}
+
+.checkoutButton:hover {
+  background-color: #5a67d8;
+}
+
+@media (max-width: 1439px) {
+  .promoCode input {
+    padding: 11px 100px 11px 14px;
+    font-size: 0.92rem;
+  }
+
+  .applyPromoButton,
+  .changePromoButton {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    padding: 7px 14px;
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .promoCode {
+    margin: 20px 0;
+    padding: 15px 0;
+    border-top: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+  }
+
+  .promoCode input {
+    padding: 10px 90px 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .applyPromoButton,
+  .changePromoButton {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    right: 6px;
+  }
+
+  .promoSuccess {
+    font-size: 0.85rem;
+    margin: 8px 0 0 0;
+  }
+}

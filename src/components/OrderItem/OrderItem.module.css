@@ -1,0 +1,124 @@
+.orderItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.orderItem:not(:last-child) {
+  border-bottom: 1px solid #ddd;
+}
+
+.itemImage {
+  width: 56px;
+  height: 56px;
+  background-color: #c4c4c4;
+  border-radius: 10px;
+}
+
+.itemInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.itemName {
+  font-weight: 500;
+  color: #1a1a1a;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.itemDetails {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.detail {
+  font-size: 0.85rem;
+  color: #aaa;
+  line-height: 1.2;
+}
+
+.detail:not(:first-child)::before {
+  content: "•";
+  color: #aaa;
+  display: inline-block;
+  margin: 0 16px;
+}
+
+.itemPrice {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.125;
+}
+
+@media (max-width: 1439px) {
+  .orderItem {
+    gap: 14px;
+    padding: 12px 0;
+  }
+
+  .itemImage {
+    width: 50px;
+    height: 50px;
+  }
+
+  .itemName {
+    font-size: 0.95rem;
+  }
+
+  .detail {
+    font-size: 0.82rem;
+  }
+
+  .detail:not(:first-child)::before {
+    margin: 0 12px;
+  }
+
+  .itemPrice {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .orderItem {
+    gap: 12px;
+    padding: 10px 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .itemImage {
+    width: 40px;
+    height: 40px;
+  }
+
+  .itemInfo {
+    gap: 4px;
+    width: 100%;
+  }
+
+  .itemName {
+    font-size: 0.9rem;
+  }
+
+  .itemDetails {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .detail {
+    font-size: 0.8rem;
+  }
+
+  .detail:not(:first-child)::before {
+    margin: 0 8px;
+  }
+
+  .itemPrice {
+    font-size: 0.9rem;
+    align-self: flex-end;
+  }
+}

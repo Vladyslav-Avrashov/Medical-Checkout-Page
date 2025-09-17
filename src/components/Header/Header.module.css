@@ -1,0 +1,127 @@
+.header {
+  background-color: #5a9bfe;
+  position: sticky;
+  z-index: 100;
+}
+
+.header > div {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 27px 0;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 20px;
+  transition: color 0.2s ease-in-out;
+}
+
+.logo:hover {
+  color: lightgray;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.link,
+.activeLink {
+  font-weight: 400;
+  font-size: 14px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.link:hover {
+  color: lightgray;
+}
+
+.activeLink {
+  color: lightgray;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.icon {
+  color: #ffffff;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease-in-out;
+}
+
+.icon:hover {
+  color: lightgray;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  align-items: center;
+}
+
+.burger:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.burger span {
+  width: 20px;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 1px;
+  transition: all 0.2s ease-in-out;
+}
+
+@media (max-width: 1439px) {
+  .header > div {
+    padding: 27px 20px;
+  }
+
+  .right {
+    gap: 25px;
+  }
+}
+
+@media (max-width: 767px) {
+  .center {
+    display: none;
+  }
+
+  .right {
+    gap: 15px;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .header > div {
+    padding: 27px 15px;
+  }
+}

@@ -1,0 +1,148 @@
+.footer {
+  background-color: #031525;
+  color: #ffffff;
+}
+
+.top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 0 123px 0;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+  gap: 162px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.column h4 {
+  font-weight: 500;
+  font-size: 20px;
+  margin: 0 0 8px 0;
+}
+
+.column p,
+.column a {
+  margin: 0;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+  opacity: 0.6;
+}
+
+.column a {
+  transition: color 0.2s ease-in-out;
+}
+
+.column a:hover {
+  color: #6c7bff;
+}
+
+.socials {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.icon {
+  margin: -20px 0 0 0;
+  width: 24px;
+  height: 24px;
+}
+
+.bottom {
+  border-top: 1px solid #374151;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 27px;
+  text-align: center;
+}
+
+.bottom p {
+  font-weight: 400;
+  font-size: 14px;
+  margin: 0;
+}
+
+@media (max-width: 1439px) and (min-width: 768px) {
+  .top {
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 40px 25px 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    justify-items: center;
+  }
+
+  .column {
+    align-items: center;
+    text-align: center;
+  }
+
+  .column:first-child {
+    grid-column: span 2;
+  }
+
+  .column h4 {
+    font-size: 1.05rem;
+  }
+
+  .column p,
+  .column a {
+    font-size: 0.9rem;
+  }
+
+  .socials {
+    gap: 14px;
+    justify-content: center;
+  }
+
+  .iconLink {
+    width: 38px;
+    height: 38px;
+  }
+
+  .icon {
+    width: 19px;
+    height: 19px;
+  }
+
+  .bottom {
+    max-width: 768px;
+    padding: 22px 25px;
+  }
+
+  .bottom p {
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .top {
+    max-width: 375px;
+    margin: 0 auto;
+    padding: 30px 15px 25px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 25px;
+  }
+
+  .column {
+    align-items: center;
+    text-align: center;
+  }
+
+  .socials {
+    justify-content: center;
+  }
+
+  .bottom {
+    padding: 20px 15px;
+  }
+}

@@ -1,0 +1,17 @@
+.orderList {
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  padding: 24px;
+}
+
+@media (max-width: 1439px) and (min-width: 768px) {
+  .orderList {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .orderList {
+    padding: 16px;
+  }
+}

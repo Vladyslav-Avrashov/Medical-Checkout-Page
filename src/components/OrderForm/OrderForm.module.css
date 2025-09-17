@@ -1,0 +1,83 @@
+.orderForm h2 {
+  display: none;
+}
+
+.formSection {
+  padding: 30px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.formSection:last-child {
+  border-bottom: none;
+}
+
+.formSection h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 20px 0;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #495057;
+  background-color: #fff;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.inputGroup input:focus {
+  outline: none;
+  border-color: #5a9bfe;
+}
+
+@media (max-width: 1439px) {
+  .formSection {
+    padding: 25px 20px;
+  }
+
+  .formSection h3 {
+    font-size: 1.15rem;
+    margin: 0 0 18px 0;
+  }
+
+  .inputGroup {
+    margin-bottom: 18px;
+  }
+
+  .inputGroup input {
+    padding: 13px 15px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .formSection {
+    padding: 20px 15px;
+  }
+
+  .formSection h3 {
+    font-size: 1.1rem;
+    margin: 0 0 15px 0;
+  }
+
+  .inputGroup {
+    margin-bottom: 15px;
+  }
+
+  .inputGroup input {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+
+  .inputRow {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,101 @@
+.formDetails h3 {
+  margin: 0 0 35px 0;
+  font-weight: 500;
+  font-size: 24px;
+  color: #000;
+}
+
+.inputGroup {
+  position: relative;
+  margin-bottom: 41px;
+}
+
+.inputGroup:last-child {
+  margin-bottom: 0;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 19px 24px;
+  transition: border-color 0.2s ease-in-out;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  height: 58px;
+}
+
+.inputGroup input:focus {
+  outline: none;
+  border-color: #5a9bfe;
+}
+
+.inputGroup.hasError input {
+  border-color: #d9534f;
+}
+
+.inputGroup.hasError input:focus {
+  border-color: #d9534f;
+}
+
+.inputGroup input::placeholder {
+  color: transparent;
+}
+
+.inputGroup label {
+  position: absolute;
+  top: 29px;
+  left: 16px;
+  font-size: 0.875rem;
+  color: #6c757d;
+  pointer-events: none;
+  transition: 0.15s ease-in-out;
+  transform: translateY(-50%);
+}
+
+.inputGroup input:focus + label,
+.inputGroup input:not(:placeholder-shown) + label {
+  top: 0;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  line-height: 1.28571;
+  color: #aaa;
+  background-color: white;
+  padding: 0 12px;
+}
+
+.inputGroup.hasError label {
+  color: #6c757d;
+}
+
+.inputGroup.hasError input:focus + label,
+.inputGroup.hasError input:not(:placeholder-shown) + label {
+  color: #aaa;
+}
+
+.inputRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.error {
+  color: #d9534f;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  min-height: 0;
+}
+
+@media (max-width: 1439px) {
+  .inputRow {
+    flex-direction: column;
+    margin-bottom: 41px;
+  }
+}
+
+@media (max-width: 767px) {
+  .inputRow {
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+}
