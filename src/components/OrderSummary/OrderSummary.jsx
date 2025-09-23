@@ -1,24 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {
-  SHIPPING_FEE,
-  PROMO_CODE,
-  DISCOUNT_AMOUNT,
-  ITEMS,
-} from "../../constants/constants";
-import { calculateSubtotal, calculateTotal } from "../../utils/utils";
 import OrderList from "../OrderList/OrderList";
 import styles from "./OrderSummary.module.css";
+import {
+  selectCartItems,
+  selectCartSubTotal,
+  selectCartTotalWithShipping,
+} from "../../redux/cart/selectors";
+import { fetchCart } from "../../redux/cart/operations";
+
+const PROMO_CODE = "DISCOUNT10";
+const DISCOUNT_AMOUNT = 20;
 
 const OrderSummary = ({ isSubmitting }) => {
+  const dispatch = useDispatch();
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
   const [isPromoApplied, setIsPromoApplied] = useState(false);
   const [isEditable, setIsEditable] = useState(true);
 
-  const subTotal = calculateSubtotal(ITEMS);
-  const total = calculateTotal(subTotal, SHIPPING_FEE, discount);
+  const items = useSelector(selectCartItems);
+  const subTotal = useSelector(selectCartSubTotal);
+  const totalWithShipping = useSelector(selectCartTotalWithShipping);
+
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, [dispatch]);
 
   const handleApplyPromoCode = () => {
     if (promoCode === PROMO_CODE) {
@@ -40,11 +49,13 @@ const OrderSummary = ({ isSubmitting }) => {
     setIsEditable(true);
   };
 
+  const total = totalWithShipping - discount;
+
   return (
     <div className={styles.orderSummary}>
       <h2>Order Summary</h2>
 
-      <OrderList items={ITEMS} />
+      <OrderList items={items} />
 
       <div className={styles.promoCode}>
         <h4>Apply Promocode</h4>
@@ -91,7 +102,7 @@ const OrderSummary = ({ isSubmitting }) => {
         </div>
         <div className={styles.summaryItem}>
           <span>Shipping Fee</span>
-          <span>${SHIPPING_FEE}</span>
+          <span>${totalWithShipping - subTotal}</span>
         </div>
         <div className={styles.summaryItem}>
           <span>Total</span>
@@ -102,7 +113,7 @@ const OrderSummary = ({ isSubmitting }) => {
       <button
         type="submit"
         className={styles.checkoutButton}
-        disabled={isSubmitting}
+        disabled={isSubmitting || items.length === 0}
       >
         {isSubmitting ? "Placing Order..." : "Checkout"}
       </button>
