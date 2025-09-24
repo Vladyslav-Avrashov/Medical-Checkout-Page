@@ -57,8 +57,6 @@ const CheckoutPage = () => {
       ...(promoCode && { promoCode }),
     };
 
-    console.log("Sending order data:", orderData);
-
     try {
       await dispatch(createOrder(orderData)).unwrap();
       await dispatch(fetchCart());
