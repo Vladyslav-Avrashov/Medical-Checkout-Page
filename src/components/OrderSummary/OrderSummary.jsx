@@ -11,15 +11,17 @@ import {
 } from "../../redux/cart/selectors";
 import { fetchCart } from "../../redux/cart/operations";
 
-const PROMO_CODE = "DISCOUNT10";
-const DISCOUNT_AMOUNT = 20;
-
-const OrderSummary = ({ isSubmitting }) => {
+const OrderSummary = ({
+  isSubmitting,
+  onPromoCodeChange,
+  appliedPromoCode,
+}) => {
   const dispatch = useDispatch();
-  const [promoCode, setPromoCode] = useState("");
-  const [discount, setDiscount] = useState(0);
-  const [isPromoApplied, setIsPromoApplied] = useState(false);
-  const [isEditable, setIsEditable] = useState(true);
+  const [promoCodeInput, setPromoCodeInput] = useState(appliedPromoCode || "");
+
+  useEffect(() => {
+    setPromoCodeInput(appliedPromoCode || "");
+  }, [appliedPromoCode]);
 
   const items = useSelector(selectCartItems);
   const subTotal = useSelector(selectCartSubTotal);
@@ -30,26 +32,35 @@ const OrderSummary = ({ isSubmitting }) => {
   }, [dispatch]);
 
   const handleApplyPromoCode = () => {
-    if (promoCode === PROMO_CODE) {
-      setDiscount(DISCOUNT_AMOUNT);
-      setIsPromoApplied(true);
-      setIsEditable(false);
-      toast.success(`Promo code applied: -$${DISCOUNT_AMOUNT}`);
-    } else {
-      setDiscount(0);
-      setIsPromoApplied(false);
-      toast.error("Invalid promo code!");
+    const trimmedCode = promoCodeInput.trim();
+    const alphanumericRegex = /^[a-zA-Z0-9]+$/;
+
+    if (!trimmedCode) {
+      toast.error("Please enter a promo code!");
+      setPromoCodeInput("");
+      return;
     }
+
+    if (!alphanumericRegex.test(trimmedCode)) {
+      toast.error("Promo code can only contain English letters and numbers!");
+      setPromoCodeInput("");
+      return;
+    }
+
+    onPromoCodeChange(trimmedCode);
+    toast.success(`Promo code applied: ${trimmedCode}`);
   };
 
-  const handleChangePromoCode = () => {
-    setPromoCode("");
-    setIsPromoApplied(false);
-    setDiscount(0);
-    setIsEditable(true);
+  const handleRemovePromoCode = () => {
+    onPromoCodeChange("");
+    toast.info("Promo code removed");
   };
 
-  const total = totalWithShipping - discount;
+  const handlePromoCodeInputChange = (e) => {
+    setPromoCodeInput(e.target.value);
+  };
+
+  const isPromoApplied = Boolean(appliedPromoCode);
 
   return (
     <div className={styles.orderSummary}>
@@ -64,33 +75,34 @@ const OrderSummary = ({ isSubmitting }) => {
             type="text"
             id="promoCode"
             name="promoCode"
-            value={promoCode}
-            onChange={(e) => setPromoCode(e.target.value)}
+            value={promoCodeInput}
+            onChange={handlePromoCodeInputChange}
             placeholder="Promotion or Discount code"
             className={isPromoApplied ? styles.promoCodeApplied : ""}
-            disabled={!isEditable}
+            disabled={isPromoApplied}
           />
           {isPromoApplied ? (
             <button
               type="button"
               className={styles.changePromoButton}
-              onClick={handleChangePromoCode}
+              onClick={handleRemovePromoCode}
             >
-              Change Code
+              Remove Code
             </button>
           ) : (
             <button
               type="button"
               className={styles.applyPromoButton}
               onClick={handleApplyPromoCode}
+              disabled={!promoCodeInput.trim()}
             >
               Apply Code
             </button>
           )}
         </div>
-        {discount > 0 && (
+        {isPromoApplied && (
           <p className={styles.promoSuccess}>
-            Promo code applied: -${discount}
+            Promo code applied: {appliedPromoCode}
           </p>
         )}
       </div>
@@ -106,7 +118,7 @@ const OrderSummary = ({ isSubmitting }) => {
         </div>
         <div className={styles.summaryItem}>
           <span>Total</span>
-          <span className={styles.total}>${total}</span>
+          <span className={styles.total}>${totalWithShipping}</span>
         </div>
       </div>
 

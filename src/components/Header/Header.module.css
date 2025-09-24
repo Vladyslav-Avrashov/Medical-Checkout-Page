@@ -74,7 +74,7 @@
   height: 18px;
 }
 
-.largeIcon .icon:hover,
+.icon:hover,
 .largeIcon:hover {
   color: lightgray;
 }

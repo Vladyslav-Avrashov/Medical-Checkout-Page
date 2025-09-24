@@ -1,5 +1,6 @@
 import { Formik, Form } from "formik";
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -13,10 +14,12 @@ import { checkoutValidationSchema } from "../../utils/validationSchemas";
 import styles from "./CheckoutPage.module.css";
 import { selectCartItems } from "../../redux/cart/selectors";
 import { createOrder } from "../../redux/order/operations";
+import { fetchCart } from "../../redux/cart/operations";
 
 const CheckoutPage = () => {
   const dispatch = useDispatch();
   const items = useSelector(selectCartItems);
+  const [promoCode, setPromoCode] = useState("");
 
   const initialValues = {
     fullName: "",
@@ -28,6 +31,10 @@ const CheckoutPage = () => {
     country: "",
     shippingMethod: "",
     paymentMethod: "",
+  };
+
+  const handlePromoCodeChange = (newPromoCode) => {
+    setPromoCode(newPromoCode);
   };
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
@@ -47,15 +54,21 @@ const CheckoutPage = () => {
       country: values.country,
       shippingMethod: values.shippingMethod,
       paymentMethod: values.paymentMethod,
+      ...(promoCode && { promoCode }),
     };
+
     console.log("Sending order data:", orderData);
+
     try {
       await dispatch(createOrder(orderData)).unwrap();
+      await dispatch(fetchCart());
       toast.success("✅ Order submitted successfully!", {
         position: "top-right",
         autoClose: 2000,
       });
+
       resetForm();
+      setPromoCode("");
     } catch (error) {
       toast.error(`Failed to place order: ${error}`);
     } finally {
@@ -76,7 +89,11 @@ const CheckoutPage = () => {
         {({ isSubmitting }) => (
           <Form className={styles.checkoutContent}>
             <OrderForm />
-            <OrderSummary isSubmitting={isSubmitting} />
+            <OrderSummary
+              isSubmitting={isSubmitting}
+              onPromoCodeChange={handlePromoCodeChange}
+              appliedPromoCode={promoCode}
+            />
           </Form>
         )}
       </Formik>
